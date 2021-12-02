@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cars {
+
     public String ownerId;
     public String carId;
     public String title;
@@ -26,4 +27,5 @@ public class Cars {
     public String currency;
     public Long year;
     public Long rentsQuantity;
+
 }

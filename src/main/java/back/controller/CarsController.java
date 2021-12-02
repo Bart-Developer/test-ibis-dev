@@ -15,8 +15,7 @@ public class CarsController {
     CarsService carsService;
 
     @GetMapping("/get_ford_cars")
-    public ResponseEntity<?> getAllCars() {
-        return this.carsService.getCarsFiltered();
+    public ResponseEntity<?> getCarsFiltered() {
+        return this.carsService.getCarsFiltered2();
     }
-
 }
