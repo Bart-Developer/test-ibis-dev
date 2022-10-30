@@ -1,4 +1,8 @@
-# test-ibis-dev
+# test-ibis-dev - 
+
+
+Este proyecto empezó como un test, pero ahora lo que le hice fué implentarle algunas cosas del cual fué lo aprendido a lo largo de toda mi trayectoria como desarrollador Backend, le faltan aún más cosas como agregar un guardado en cache de la data que consumo desde otro MS y controlar su actualización con TTL, etc. Sino que no tengo tanto tiempo para hacerlo y esto consume mucho tiempo de tiempo libre que lo uso para hoy disfrutar de las cosas que me gustan. ;) Pero bueno lo dejo a modo de ejemplo de como codeo actualmente. Espero que disfrutes la estadía!! Exitos!! 
+
 
 ### Pasos necesarios para correr este back
 
@@ -34,5 +38,7 @@
 <img src="postgress.jpg">
 
 <img src="config-migrations.jpg">
+
+Swagger : http://localhost:8080/swagger-ui/index.html#/
 
 
