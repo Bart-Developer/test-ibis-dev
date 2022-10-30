@@ -1,0 +1,170 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Microservicio para buscar autos según la marca disponibles para alquilar en importante aplicación Argentina que brinda este servicio, por ahora solo devuelve la información detallada por cada auto disponible, a su vez se pueden crear usuarios en una tabla. más adelante implementare que la información se guarde en cache y sea controlado su actualización por un TTL + implementacion de Test unitarios con Junit y mockito",
+    "version": "3.0.0",
+    "title": "Demo - Api rest Java - MS"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Get all Cars by brand",
+      "description": "Endpoint para obtener información de autos de acuerdo a su marca"
+    },
+    {
+      "name": "user-controller",
+      "description": "User Controller"
+    }
+  ],
+  "paths": {
+    "/api/create_user": {
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "createUser",
+        "operationId": "createUserUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userDTO",
+            "description": "userDTO",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/get_cars/{brand}": {
+      "get": {
+        "tags": [
+          "Get all Cars by brand"
+        ],
+        "summary": "Get all avaliable cars by brand ",
+        "operationId": "getCarsFilteredUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "brand",
+            "in": "path",
+            "description": "brand",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "FORD",
+              "VOLKSWAGEN",
+              "PEUGEOT"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MicroserviceResponse«object»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        }
+      },
+      "title": "Error"
+    },
+    "Meta": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "operation": {
+          "type": "string"
+        }
+      },
+      "title": "Meta"
+    },
+    "MicroserviceResponse«object»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Error"
+          }
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      },
+      "title": "MicroserviceResponse«object»"
+    },
+    "UserDTO": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      },
+      "title": "UserDTO"
+    }
+  }
+}
